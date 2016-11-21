@@ -1,0 +1,61 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>walkingdevs.maven</groupId>
+        <artifactId>parent</artifactId>
+        <version>2</version>
+    </parent>
+
+    <groupId>walkingdevs</groupId>
+    <artifactId>jee</artifactId>
+    <version>7.0</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>walkingdevs</groupId>
+            <artifactId>sdk</artifactId>
+            <version>8.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0-1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>arquillian-tomee-embedded</artifactId>
+            <version>7.0.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4.1212</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources/${db}</directory>
+            </testResource>
+        </testResources>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>bintray</id>
+            <url>http://dl.bintray.com/walkingdevs/mvn</url>
+        </repository>
+    </repositories>
+
+    <properties>
+        <db>hsql</db>
+    </properties>
+</project>

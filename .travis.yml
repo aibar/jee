@@ -1,0 +1,23 @@
+language: java
+jdk:
+  - oraclejdk8
+
+cache:
+  directories:
+    - $HOME/.m2
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database postgres;' -U postgres
+
+script:
+  - mvn test -s settings.xml -B -Ddb=hsql
+  - mvn test -s settings.xml -B -Ddb=pg
+
+deploy:
+  provider: script
+  script: mvn deploy -s settings.xml -B -Dbintray=$bintray -DskipTests
+  on:
+    branch: master
