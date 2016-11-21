@@ -19,5 +19,3 @@ script:
 deploy:
   provider: script
   script: mvn deploy -s settings.xml -B -Dbintray=$bintray -DskipTests
-  on:
-    branch: master
