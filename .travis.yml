@@ -9,9 +9,6 @@ cache:
 services:
   - postgresql
 
-before_script:
-  - psql -c 'create database postgres;' -U postgres
-
 script:
   - mvn test -s settings.xml -B -Ddb=hsql
   - mvn test -s settings.xml -B -Ddb=pg
@@ -19,3 +16,5 @@ script:
 deploy:
   provider: script
   script: mvn deploy -s settings.xml -B -Dbintray=$bintray -DskipTests
+  on:
+    branch: master
