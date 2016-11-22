@@ -5,7 +5,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public interface Repo<E, I> {
-    Iterable<E> all();
+    List<E> all();
 
     E find(I i);
 
