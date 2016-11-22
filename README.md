@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.org/walkingdevs/jee.svg?branch=master)](https://travis-ci.org/walkingdevs/jee)
-
-[![Image](https://bintray.com/walkingdevs/mvn/jee?source=watch)](https://www.bintray.com/docs/images/bintray_badge_color.png)
+[![Download](https://api.bintray.com/packages/walkingdevs/mvn/jee/images/download.svg) ](https://bintray.com/walkingdevs/mvn/jee/_latestVersion)
 
 ## Artifact
 
