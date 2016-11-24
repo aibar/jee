@@ -15,3 +15,19 @@
             <url>http://dl.bintray.com/walkingdevs/mvn</url>
         </repository>
     </repositories>
+
+## Building
+
+    mvn install
+
+## Testing
+
+With Hsql
+
+    mvn test
+
+With Postgres
+
+    docker run -d --name postgres postgres
+    docker run --rm -it -v $PWD:/src -w /src --link postgres walkingdevs/mvn mvn test -Ddb=pg
+    docker rm -f postgres
