@@ -10,8 +10,8 @@ services:
   - postgresql
 
 script:
-  - mvn test -s settings.xml -B -Ddb=hsql
-  - mvn test -s settings.xml -B -Ddb=pg
+  - mvn test -B -Ddb=hsql
+  - mvn test -B -Ddb=pg
 
 deploy:
   provider: script
