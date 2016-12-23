@@ -22,6 +22,10 @@ public abstract class AbstractRepo<E, I> implements Repo<E, I> {
     }
 
     public E find(I i) {
+        // Eclipselink hack
+        if (i == null) {
+            return null;
+        }
         return em.find(type, i);
     }
 

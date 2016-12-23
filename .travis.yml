@@ -10,8 +10,10 @@ services:
   - postgresql
 
 script:
-  - mvn test -B -Ddb=hsql
+  - mvn test -B
+  - mvn test -B -Dpersistence-provider=eclipselink
   - mvn test -B -Ddb=pg
+  - mvn test -B -Ddb=pg -Dpersistence-provider=eclipselink
 
 deploy:
   provider: script
