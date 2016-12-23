@@ -6,7 +6,7 @@
     <dependency>
         <groupId>walkingdevs</groupId>
         <artifactId>jee</artifactId>
-        <version>7.0</version>
+        <version>7.1</version>
     </dependency>
 
     <repositories>
