@@ -30,7 +30,7 @@ public abstract class AbstractRepo<E, I> implements Repo<E, I> {
     }
 
     public Repo<E, I> remove(E e) {
-        em.remove(Val.isNull(e, "e").get());
+        em.remove(Val.NULL("e", e).get());
         return this;
     }
 
@@ -66,7 +66,7 @@ public abstract class AbstractRepo<E, I> implements Repo<E, I> {
 
     public TypedQuery<E> typedQuery(String query) {
         return em.createQuery(
-            Val.isNull(query, "query").get(),
+            Val.NULL("query", query).get(),
             type
         );
     }
@@ -76,13 +76,24 @@ public abstract class AbstractRepo<E, I> implements Repo<E, I> {
     }
 
     public List<E> byColumn(String column, Object val) {
-        Val.isNull(column, "column").fail();
+        Val.NULL("column", column).crash();
         try {
             return typedQuery("select e from " + type().getSimpleName() + " e where e." + column + " = :val")
                 .setParameter("val", val)
                 .getResultList();
         } catch (NoResultException fail) {
             return new ArrayList<>();
+        }
+    }
+
+    public E byColumnUnique(String column, Object val) {
+        Val.NULL("column", column).crash();
+        try {
+            return typedQuery("select e from " + type().getSimpleName() + " e where e." + column + " = :val")
+                .setParameter("val", val)
+                .getSingleResult();
+        } catch (Exception fail) {
+            return null;
         }
     }
 

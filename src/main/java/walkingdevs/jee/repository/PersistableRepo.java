@@ -11,14 +11,14 @@ import java.util.List;
 public class PersistableRepo<P extends Persistable<I>, I> extends AbstractRepo<P, I> {
     public boolean isNew(P p) {
         return find(
-            Val.isNull(p, "p").get().getId()
+            Val.NULL("p", p).get().getId()
         ) == null;
     }
 
 
     public List<P> createdBetween(Date from, Date to) {
-        Val.isNull(from, "from").fail();
-        Val.isNull(to, "to").fail();
+        Val.NULL("from", from).crash();
+        Val.NULL("to", to).crash();
         try {
             return typedQuery("select e from " + type().getSimpleName() + " e where e.createdDate between :from and :to")
                 .setParameter("from", from)
@@ -30,8 +30,8 @@ public class PersistableRepo<P extends Persistable<I>, I> extends AbstractRepo<P
     }
 
     public List<P> modifiedBetween(Date from, Date to) {
-        Val.isNull(from, "from").fail();
-        Val.isNull(to, "to").fail();
+        Val.NULL("from", from).crash();
+        Val.NULL("to", to).crash();
         try {
             return typedQuery("select e from " + type().getSimpleName() + " e where e.modifiedDate between :from and :to")
                 .setParameter("from", from)
@@ -83,8 +83,8 @@ public class PersistableRepo<P extends Persistable<I>, I> extends AbstractRepo<P
     }
 
     private List<P> byDates(Date date, String condition) {
-        Val.isNull(date, "date").fail();
-        Val.isNull(condition, "condition").fail();
+        Val.NULL("date", date).crash();
+        Val.NULL("condition", condition).crash();
         try {
             return typedQuery("select e from " + type().getSimpleName() + " e where " + condition)
                 .setParameter("date", date)
