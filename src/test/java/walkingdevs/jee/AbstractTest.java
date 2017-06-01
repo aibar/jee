@@ -14,6 +14,7 @@ public abstract class AbstractTest extends Assert {
         return ShrinkWrap.create(WebArchive.class)
             .addPackages(true, "walkingdevs.jee")
             .addAsResource("persistence.xml", "META-INF/persistence.xml")
+            .addAsResource("META-INF/beans.xml", "META-INF/beans.xml")
             .addAsWebInfResource("resources.xml");
     }
 }
