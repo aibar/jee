@@ -14,9 +14,3 @@ script:
   - mvn test -B -Dpersistence-provider=eclipselink
   - mvn test -B -Ddb=pg
   - mvn test -B -Ddb=pg -Dpersistence-provider=eclipselink
-
-deploy:
-  provider: script
-  script: mvn deploy -s settings.xml -B -Dbintray=$bintray -DskipTests
-  on:
-    tags: true
